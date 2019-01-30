@@ -25,7 +25,7 @@ public class Kleeker : MonoBehaviour
     }
     void Update()
     {
-        poangText.text = "Nukes dropped : " + score.ToString();
+        poangText.text = "Million dollars earned : " + score.ToString();
         transform.localScale = trans;
         if (size)
         {

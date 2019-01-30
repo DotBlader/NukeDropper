@@ -5,6 +5,7 @@ using TMPro;
 
 public class Upgrades : MonoBehaviour
 {
+    [Header("More Nukes Upgrade")]
     public int nukes = 1;
     public int[] nukeCost;
 
