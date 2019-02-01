@@ -5,8 +5,14 @@ using System;
 
 public class SpaceKleeker : MonoBehaviour
 {
+    public Kleeker kleeker;
     public event Action coochieKleek;
     public event Action coochieReleez;
+    
+    private void Start()
+    {
+        kleeker = GameObject.FindGameObjectWithTag("PLayer").GetComponent<Kleeker>();
+    }
     // Update is called once per frame
     void Update()
     {

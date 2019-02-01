@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Kleeker : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class Kleeker : MonoBehaviour
     public GameObject scoreText;
     public TextMeshProUGUI poangText;
     public Upgrades upgradesScript;
+
+    public event Action achieve1;
+    public event Action achieve2;
+    public event Action achieve3;
+    public event Action achieve4;
 
     public float t;
     public int score;
@@ -35,6 +41,10 @@ public class Kleeker : MonoBehaviour
         {
             transform.localScale = Vector3.MoveTowards(transform.localScale, target2, t);
         }
+        if (score >= 1) { achieve1?.Invoke(); }
+        if (score >= 1000) { achieve2?.Invoke(); }
+        if (score >= 7000) { achieve3?.Invoke(); }
+        if (score >= 10000) { achieve4?.Invoke(); }
     }
     void ScoreIncrease()
     {
