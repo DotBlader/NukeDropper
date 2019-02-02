@@ -11,7 +11,7 @@ public class SpaceKleeker : MonoBehaviour
     
     private void Start()
     {
-        kleeker = GameObject.FindGameObjectWithTag("PLayer").GetComponent<Kleeker>();
+        
     }
     // Update is called once per frame
     void Update()

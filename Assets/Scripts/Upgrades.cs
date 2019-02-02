@@ -7,6 +7,9 @@ using System;
 public class Upgrades : MonoBehaviour
 {
     public Kleeker kleeker;
+    public event Action upgrade1;
+    public event Action upgrade2;
+    public event Action upgrade3;
 
     [Header("More Nukes Upgrade")]
     public int nukes = 1;
@@ -53,16 +56,17 @@ public class Upgrades : MonoBehaviour
     {
         nukeAmount.text = "x" + nukes.ToString();
         
-        hotelAmountText.text = "x" + hotelAmount.ToString();
+        hotelAmountText.text = "x" + (hotelAmount + 1).ToString();
 
         immigrantTimer -= Time.deltaTime;
 
         taxTimer -= Time.deltaTime;
 
         if (nukes < 10)
-            nukeCostText.text = "Cost : " + nukeCost[nukes].ToString();
+            nukeCostText.text = "Cost : $" + nukeCost[nukes].ToString();
         else
         {
+            upgrade1?.Invoke();
             nukeCostText.text = "Maxed";
             nukeText.text = "Maxed";
         }
@@ -83,13 +87,14 @@ public class Upgrades : MonoBehaviour
         }
         else if (wallLevel == 3)
         {
+            upgrade2?.Invoke();
             sprite1.SetActive(false); sprite2.SetActive(false); sprite3.SetActive(true);
-            immigrantMulti = -10;
+            immigrantMulti = -100;
             wallText.text = "Maxed";
             wallCostText.text = "Maxed";
         }
         if (wallLevel < 3)
-            wallCostText.text = "Cost : " + wallCost[wallLevel].ToString();
+            wallCostText.text = "Cost : $" + wallCost[wallLevel].ToString();
         
         if (immigrantTimer <= 0)
         {
@@ -99,12 +104,13 @@ public class Upgrades : MonoBehaviour
 
         if (hotelAmount == 9)
         {
+            upgrade3?.Invoke();
             hotelText.text = "Maxed";
             hotelCostText.text = "Maxed";
         }
         if (hotelAmount < 9)
         {
-            hotelCostText.text = "Cost : " + hotelCost[hotelAmount].ToString();
+            hotelCostText.text = "Cost : $" + hotelCost[hotelAmount].ToString();
         }
         if (taxTimer <= 0)
         {

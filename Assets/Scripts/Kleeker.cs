@@ -31,7 +31,10 @@ public class Kleeker : MonoBehaviour
     }
     void Update()
     {
-        poangText.text = "Million dollars earned : " + score.ToString();
+        if (score > 0)
+            poangText.text = "Dollars earned : $" + score.ToString() + " 000 000";
+        else
+            poangText.text = "Dollars earned : $0";
         transform.localScale = trans;
         if (size)
         {
