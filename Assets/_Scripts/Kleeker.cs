@@ -28,9 +28,11 @@ public class Kleeker : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceKleeker>().coochieReleez += Release;
         trans = transform.localScale;
         upgradesScript = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>();
+        score = PlayerPrefs.GetInt("Score");
     }
     void Update()
     {
+        PlayerPrefs.SetInt("Score", score);
         if (score > 0)
             poangText.text = "Dollars earned : $" + score.ToString() + " 000 000";
         else
@@ -44,10 +46,10 @@ public class Kleeker : MonoBehaviour
         {
             transform.localScale = Vector3.MoveTowards(transform.localScale, target2, t);
         }
-        if (score >= 1) { achieve1?.Invoke(); }
-        if (score >= 1000) { achieve2?.Invoke(); }
-        if (score >= 7000) { achieve3?.Invoke(); }
-        if (score >= 10000) { achieve4?.Invoke(); }
+        if (score >= 1 && PlayerPrefs.GetInt("million") == 0) { achieve1?.Invoke(); }
+        if (score >= 1000 && PlayerPrefs.GetInt("billion") == 0) { achieve2?.Invoke(); }
+        if (score >= 7000 && PlayerPrefs.GetInt("sevenBillion") == 0) { achieve3?.Invoke(); }
+        if (score >= 10000 && PlayerPrefs.GetInt("tenBillion") == 0) { achieve4?.Invoke(); }
     }
     void ScoreIncrease()
     {
