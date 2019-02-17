@@ -7,6 +7,7 @@ public class Audio : MonoBehaviour
     public GameObject bing;
     public GameObject bing2;
     public GameObject bong;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,4 +29,5 @@ public class Audio : MonoBehaviour
         else if (i == 3)
             Instantiate(bong, transform.position, transform.rotation);
     }
+    
 }

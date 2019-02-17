@@ -41,5 +41,11 @@ public class AchieveScene : MonoBehaviour
         PlayerPrefs.SetInt("upgrade1", 0);
         PlayerPrefs.SetInt("upgrade2", 0);
         PlayerPrefs.SetInt("upgrade3", 0);
+        PlayerPrefs.SetInt("upgrade4", 0);
+
+        PlayerPrefs.SetInt("Nukes", 1);
+        PlayerPrefs.SetInt("WallLevel", 0);
+        PlayerPrefs.SetInt("HotelAmount", 0);
+        PlayerPrefs.SetInt("Workers", 0);
     }
 }

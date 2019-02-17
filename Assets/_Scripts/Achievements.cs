@@ -63,9 +63,9 @@ public class Achievements : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve2 += Achieve2;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve3 += Achieve3;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve4 += Achieve4;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Upgrades>().upgrade1 += Upgrade1;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Upgrades>().upgrade2 += Upgrade2;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Upgrades>().upgrade3 += Upgrade3;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade1 += Upgrade1;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade2 += Upgrade2;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade3 += Upgrade3;
 
         if (PlayerPrefs.GetInt("million") == 1) { millionGet = true; }
         if (PlayerPrefs.GetInt("billion") == 1) { billionGet = true; }

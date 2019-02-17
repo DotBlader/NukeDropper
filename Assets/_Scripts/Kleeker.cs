@@ -34,9 +34,9 @@ public class Kleeker : MonoBehaviour
     {
         PlayerPrefs.SetInt("Score", score);
         if (score > 0)
-            poangText.text = "Dollars earned : $" + score.ToString() + " 000 000";
+            poangText.text = "$" + score.ToString() + " 000 000";
         else
-            poangText.text = "Dollars earned : $0";
+            poangText.text = "$0";
         transform.localScale = trans;
         if (size)
         {
@@ -49,13 +49,15 @@ public class Kleeker : MonoBehaviour
         if (score >= 1 && PlayerPrefs.GetInt("million") == 0) { achieve1?.Invoke(); }
         if (score >= 1000 && PlayerPrefs.GetInt("billion") == 0) { achieve2?.Invoke(); }
         if (score >= 7000 && PlayerPrefs.GetInt("sevenBillion") == 0) { achieve3?.Invoke(); }
-        if (score >= 10000 && PlayerPrefs.GetInt("tenBillion") == 0) { achieve4?.Invoke(); }
+        if (score >= 50000 && PlayerPrefs.GetInt("tenBillion") == 0) { achieve4?.Invoke(); }
     }
     void ScoreIncrease()
     {
+        
         size = true;
         score = score + (1 * upgradesScript.nukes);
         Instantiate(scoreText, new Vector3(960, 540, 0), transform.rotation);
+        
     }
     void Release()
     {

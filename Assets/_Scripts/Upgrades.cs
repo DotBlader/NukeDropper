@@ -10,6 +10,7 @@ public class Upgrades : MonoBehaviour
     public event Action upgrade1;
     public event Action upgrade2;
     public event Action upgrade3;
+    public event Action upgrade4;
 
     [Header("More Nukes Upgrade")]
     public int nukes = 1;
@@ -43,24 +44,51 @@ public class Upgrades : MonoBehaviour
     public TextMeshProUGUI hotelText;
     public TextMeshProUGUI hotelCostText;
 
+    [Header("Hire Workers Upgrade")]
+    public int workerAmount;
+    public int[] workerCost;
+    public int[] timerAmount;
+    public float workTimer;
+    public bool click;
+
+    public TextMeshProUGUI workAmountText;
+    public TextMeshProUGUI workText;
+    public TextMeshProUGUI workCostText;
+
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceKleeker>().coochieKleek += WorkClick;
         kleeker = GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>();
         immigrantTimer = 4f;
         taxTimer = 8f;
+        workTimer = 10f;
+        nukes = PlayerPrefs.GetInt("Nukes");
+        wallLevel = PlayerPrefs.GetInt("WallLevel");
+        hotelAmount = PlayerPrefs.GetInt("HotelAmount");
+        workerAmount = PlayerPrefs.GetInt("Workers");
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerPrefs.SetInt("Nukes", nukes);
+        PlayerPrefs.SetInt("WallLevel", wallLevel);
+        PlayerPrefs.SetInt("HotelAmount", hotelAmount);
+        PlayerPrefs.SetInt("Workers", workerAmount);
+
         nukeAmount.text = "x" + nukes.ToString();
         
         hotelAmountText.text = "x" + (hotelAmount + 1).ToString();
 
+        workAmountText.text = "x" + workerAmount.ToString();
+
         immigrantTimer -= Time.deltaTime;
 
         taxTimer -= Time.deltaTime;
+
+        if (workerAmount > 0)
+            workTimer -= Time.deltaTime;
 
         if (nukes < 10)
             nukeCostText.text = "Cost : $" + nukeCost[nukes].ToString();
@@ -117,6 +145,25 @@ public class Upgrades : MonoBehaviour
             HotelTax();
             taxTimer = 8f;
         }
+        if (workerAmount < 10)
+        {
+            workCostText.text = "Cost : $" + workerCost[workerAmount].ToString();
+        }
+        else if (workerAmount == 10)
+        {
+            upgrade4?.Invoke();
+            workCostText.text = "Maxed";
+            workText.text = "Maxed";
+        }
+        if (workTimer <= 0)
+        {
+            click = true;
+            workTimer = (10 / (timerAmount[workerAmount] - 1));
+        }
+        else if (workTimer == (10 / timerAmount[workerAmount]))
+        {
+            click = false;
+        }
     }
     public void MoreNukes()
     {
@@ -152,5 +199,17 @@ public class Upgrades : MonoBehaviour
     public void HotelTax()
     {
         kleeker.score += hotelTaxStandard * hotelTaxMulti[hotelAmount];
+    }
+    public void HireWork()
+    {
+        if (workerAmount < 10 && kleeker.score >= workerCost[workerAmount])
+        {
+            kleeker.score -= workerCost[workerAmount];
+            workerAmount += 1;
+        }
+    }
+    public void WorkClick()
+    {
+
     }
 }
