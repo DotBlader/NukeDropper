@@ -12,6 +12,8 @@ public class Upgrades : MonoBehaviour
     public event Action upgrade3;
     public event Action upgrade4;
 
+    public SpaceKleeker spaceKleeker;
+
     [Header("More Nukes Upgrade")]
     public int nukes = 1;
     public int[] nukeCost;
@@ -48,25 +50,37 @@ public class Upgrades : MonoBehaviour
     public int workerAmount;
     public int[] workerCost;
     public int[] timerAmount;
-    public float workTimer;
-    public bool click;
+    public float timerDivider;
+    public bool click = false;
+    private bool firstClick;
+    private bool startClick;
 
     public TextMeshProUGUI workAmountText;
     public TextMeshProUGUI workText;
     public TextMeshProUGUI workCostText;
 
-    // Start is called before the first frame update
+    [Header("PlayerPrefs Ints")]
+    public int upgrade1Int;
+    public int upgrade2Int;
+    public int upgrade3Int;
+    public int upgrade4Int;
+    
     void Start()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceKleeker>().coochieKleek += WorkClick;
         kleeker = GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>();
+        spaceKleeker = GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceKleeker>();
         immigrantTimer = 4f;
         taxTimer = 8f;
-        workTimer = 10f;
         nukes = PlayerPrefs.GetInt("Nukes");
         wallLevel = PlayerPrefs.GetInt("WallLevel");
         hotelAmount = PlayerPrefs.GetInt("HotelAmount");
         workerAmount = PlayerPrefs.GetInt("Workers");
+        WorkClick();
+
+        upgrade1Int = PlayerPrefs.GetInt("upgrade1");
+        upgrade2Int = PlayerPrefs.GetInt("upgrade2");
+        upgrade3Int = PlayerPrefs.GetInt("upgrade3");
+        upgrade4Int = PlayerPrefs.GetInt("upgrade4");
     }
 
     // Update is called once per frame
@@ -81,20 +95,28 @@ public class Upgrades : MonoBehaviour
         
         hotelAmountText.text = "x" + (hotelAmount + 1).ToString();
 
-        workAmountText.text = "x" + workerAmount.ToString();
+        workAmountText.text = "x" + (workerAmount + 1).ToString();
 
         immigrantTimer -= Time.deltaTime;
 
         taxTimer -= Time.deltaTime;
 
         if (workerAmount > 0)
-            workTimer -= Time.deltaTime;
+            timerDivider = 10 / (timerAmount[workerAmount] - 1);
+        else { timerDivider = 10; }
+
+        if (startClick != true)
+        {
+            WorkClick();
+            startClick = true;
+        }
 
         if (nukes < 10)
             nukeCostText.text = "Cost : $" + nukeCost[nukes].ToString();
         else
         {
-            upgrade1?.Invoke();
+            if (upgrade1Int == 0)
+                upgrade1?.Invoke();
             nukeCostText.text = "Maxed";
             nukeText.text = "Maxed";
         }
@@ -115,7 +137,8 @@ public class Upgrades : MonoBehaviour
         }
         else if (wallLevel == 3)
         {
-            upgrade2?.Invoke();
+            if (upgrade2Int == 0)
+                upgrade2?.Invoke();
             sprite1.SetActive(false); sprite2.SetActive(false); sprite3.SetActive(true);
             immigrantMulti = -100;
             wallText.text = "Maxed";
@@ -132,7 +155,8 @@ public class Upgrades : MonoBehaviour
 
         if (hotelAmount == 9)
         {
-            upgrade3?.Invoke();
+            if (upgrade3Int == 0)
+                upgrade3?.Invoke();
             hotelText.text = "Maxed";
             hotelCostText.text = "Maxed";
         }
@@ -145,25 +169,18 @@ public class Upgrades : MonoBehaviour
             HotelTax();
             taxTimer = 8f;
         }
-        if (workerAmount < 10)
+        if (workerAmount < 9)
         {
             workCostText.text = "Cost : $" + workerCost[workerAmount].ToString();
         }
-        else if (workerAmount == 10)
+        else if (workerAmount == 9)
         {
-            upgrade4?.Invoke();
+            if (upgrade4Int == 0)
+                upgrade4?.Invoke();
             workCostText.text = "Maxed";
             workText.text = "Maxed";
         }
-        if (workTimer <= 0)
-        {
-            click = true;
-            workTimer = (10 / (timerAmount[workerAmount] - 1));
-        }
-        else if (workTimer == (10 / timerAmount[workerAmount]))
-        {
-            click = false;
-        }
+        
     }
     public void MoreNukes()
     {
@@ -202,14 +219,21 @@ public class Upgrades : MonoBehaviour
     }
     public void HireWork()
     {
-        if (workerAmount < 10 && kleeker.score >= workerCost[workerAmount])
+        if (workerAmount < 9 && kleeker.score >= workerCost[workerAmount])
         {
             kleeker.score -= workerCost[workerAmount];
             workerAmount += 1;
+            if (firstClick != true)
+            {
+                WorkClick();
+                firstClick = true;
+            }
         }
     }
     public void WorkClick()
     {
-
+        if (click == false && workerAmount > 0) 
+            StartCoroutine(spaceKleeker.BetweenClicks());
     }
+    
 }

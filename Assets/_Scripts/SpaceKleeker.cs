@@ -5,6 +5,9 @@ using System;
 
 public class SpaceKleeker : MonoBehaviour
 {
+    public bool click;
+    public bool release;
+
     public Upgrades upgrades;
     public event Action coochieKleek;
     public event Action coochieReleez;
@@ -13,19 +16,25 @@ public class SpaceKleeker : MonoBehaviour
     {
         upgrades = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>();
     }
-    // Update is called once per frame
     void Update()
     {
-        if (upgrades.workTimer <= 0 && upgrades.click == true)
+        if (upgrades.click == true)
         {
-            coochieKleek?.Invoke();
+            if (click == true)
+            {
+                coochieKleek?.Invoke();
+                StartCoroutine(DuringClick());
+                click = false;
+            }
         }
-        
-        else if (upgrades.workTimer <= (10 / upgrades.timerAmount[upgrades.workerAmount]) && upgrades.workTimer > (10 / (upgrades.timerAmount[upgrades.workerAmount] - 0.01f)) && upgrades.click == false)
+        else
         {
-            coochieReleez?.Invoke();
+            if (release == true)
+            {
+                coochieReleez?.Invoke();
+                release = false;
+            }
         }
-            
     }
     private void OnMouseDown()
     {
@@ -35,5 +44,18 @@ public class SpaceKleeker : MonoBehaviour
     {
         coochieReleez?.Invoke();
     }
+    public IEnumerator BetweenClicks()
+    {
+        yield return new WaitForSeconds(seconds: upgrades.timerDivider);
+        upgrades.click = true;
+        click = true;
 
+    }
+    public IEnumerator DuringClick()
+    {
+        yield return new WaitForSeconds(0.000001f);
+        upgrades.click = false;
+        release = true;
+        upgrades.WorkClick();
+    }
 }

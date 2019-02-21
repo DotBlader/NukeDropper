@@ -2380,6 +2380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kleeker: {fileID: 0}
+  spaceKleeker: {fileID: 0}
   nukes: 1
   nukeCost: 0a000000140000003200000064000000c8000000f4010000e8030000d00700007017000010270000
   nukeAmount: {fileID: 181600092}
@@ -2405,12 +2406,16 @@ MonoBehaviour:
   hotelCostText: {fileID: 920623594}
   workerAmount: 0
   workerCost: 0a0000001400000064000000f4010000e8030000d0070000a00f000070170000401f000010270000
-  timerAmount: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
-  workTimer: 0
+  timerAmount: 010000000200000003000000040000000500000006000000080000000a0000001400000032000000
+  timerDivider: 0
   click: 0
   workAmountText: {fileID: 1081601429}
   workText: {fileID: 1799184204}
   workCostText: {fileID: 1973567332}
+  upgrade1Int: 0
+  upgrade2Int: 0
+  upgrade3Int: 0
+  upgrade4Int: 0
 --- !u!1 &695521162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,6 +3374,8 @@ MonoBehaviour:
   upgrade2Get: 0
   upgrade3: 0
   upgrade3Get: 0
+  upgrade4: 0
+  upgrade4Get: 0
   goBack: 0
   goBack2: 0
   goBack3: 0
@@ -3376,6 +3383,7 @@ MonoBehaviour:
   goBack5: 0
   goBack6: 0
   goBack7: 0
+  goBack8: 0
   anim1: {fileID: 1612706141}
   anim2: {fileID: 1228975794}
   anim3: {fileID: 131065862}
@@ -3383,6 +3391,7 @@ MonoBehaviour:
   anim5: {fileID: 1622827245}
   anim6: {fileID: 852076599}
   anim7: {fileID: 1888228904}
+  anim8: {fileID: 0}
   smallLoan: {fileID: 1612706137}
   billionsBillions: {fileID: 1228975790}
   sevenBill: {fileID: 131065858}
@@ -3390,6 +3399,7 @@ MonoBehaviour:
   WW3: {fileID: 1622827241}
   WallUpgrade: {fileID: 852076595}
   HotelUpgrade: {fileID: 1888228900}
+  WorkUpgrade: {fileID: 0}
   startTrans: {x: 1587, y: 1199, z: 1}
   target: {x: 1587, y: 929, z: 1}
 --- !u!114 &981589649
@@ -3411,6 +3421,7 @@ MonoBehaviour:
   upgrade1AS: {fileID: 1622827246}
   upgrade2AS: {fileID: 852076600}
   upgrade3AS: {fileID: 1888228905}
+  upgrade4AS: {fileID: 1652843511}
 --- !u!1 &1020731149
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,7 +5585,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1c0745af91a375e4198d104a8e1b6bca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9e1005034bc1f6d4ca7005a172de172c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5777,7 +5788,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7f80bce47325e1a4bba790cf66c7dfff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c7a7849cf6917e24a9985fcb2c5a5138, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5873,7 +5884,7 @@ Animator:
   m_GameObject: {fileID: 1652843509}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4899a15b515f82a478cae82870894e0f, type: 2}
+  m_Controller: {fileID: 9100000, guid: c9af4061609e80742bad05c843c3d093, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6242,6 +6253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be640ce5a6d4bd64488809b59a4bfab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: 0
+  release: 0
   upgrades: {fileID: 0}
 --- !u!212 &1746791547
 SpriteRenderer:
@@ -6356,7 +6369,6 @@ MonoBehaviour:
   bing: {fileID: 6638427357729951036, guid: 405a51a764914e44dbba317948639a4a, type: 3}
   bing2: {fileID: 1027710115016929015, guid: e2d217d5806645a49a99d8d9eac88fd0, type: 3}
   bong: {fileID: 8149598609236655300, guid: dac8f6f0f11605a4cb35c58ddc72ac57, type: 3}
-  smallLoanAS: {fileID: 0}
 --- !u!1 &1799184202
 GameObject:
   m_ObjectHideFlags: 0
@@ -6772,7 +6784,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7f80bce47325e1a4bba790cf66c7dfff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c7a7849cf6917e24a9985fcb2c5a5138, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

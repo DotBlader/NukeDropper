@@ -27,6 +27,9 @@ public class Achievements : MonoBehaviour
     public bool upgrade3;
     public bool upgrade3Get;
 
+    public bool upgrade4;
+    public bool upgrade4Get;
+
     public bool goBack;
     public bool goBack2;
     public bool goBack3;
@@ -34,6 +37,7 @@ public class Achievements : MonoBehaviour
     public bool goBack5;
     public bool goBack6;
     public bool goBack7;
+    public bool goBack8;
 
     [Header("Animators")]
     public Animator anim1;
@@ -43,6 +47,7 @@ public class Achievements : MonoBehaviour
     public Animator anim5;
     public Animator anim6;
     public Animator anim7;
+    public Animator anim8;
 
     [Header("GameObjects")]
     public GameObject smallLoan;
@@ -52,6 +57,7 @@ public class Achievements : MonoBehaviour
     public GameObject WW3;
     public GameObject WallUpgrade;
     public GameObject HotelUpgrade;
+    public GameObject WorkUpgrade;
 
     public Vector3 startTrans;
     public Vector3 target;
@@ -66,6 +72,7 @@ public class Achievements : MonoBehaviour
         GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade1 += Upgrade1;
         GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade2 += Upgrade2;
         GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade3 += Upgrade3;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade4 += Upgrade4;
 
         if (PlayerPrefs.GetInt("million") == 1) { millionGet = true; }
         if (PlayerPrefs.GetInt("billion") == 1) { billionGet = true; }
@@ -74,6 +81,7 @@ public class Achievements : MonoBehaviour
         if (PlayerPrefs.GetInt("upgrade1") == 1) { upgrade1Get = true; }
         if (PlayerPrefs.GetInt("upgrade2") == 1) { upgrade2Get = true; }
         if (PlayerPrefs.GetInt("upgrade3") == 1) { upgrade3Get = true; }
+        if (PlayerPrefs.GetInt("upgrade4") == 1) { upgrade4Get = true; }
     }
     private void Update()
     {
@@ -168,6 +176,19 @@ public class Achievements : MonoBehaviour
             upgrade3Get = true;
             goBack7 = false;
         }
+        if (upgrade4 == true && goBack8 == false && upgrade4Get == false)
+        {
+            anim8.SetBool("Start 0", true);
+            StartCoroutine(AchieveTimer8(2));
+            PlayerPrefs.SetInt("upgrade4", 1);
+        }
+        else if (upgrade4 == true && goBack8 == true)
+        {
+            anim8.SetTrigger("Back");
+            anim8.SetBool("Start 0", false);
+            upgrade4Get = true;
+            goBack8 = false;
+        }
 
     }
     public void Achieve1()
@@ -197,6 +218,10 @@ public class Achievements : MonoBehaviour
     public void Upgrade3()
     {
         upgrade3 = true;
+    }
+    public void Upgrade4()
+    {
+        upgrade4 = true;
     }
     public IEnumerator AchieveTimer(float seconds)
     {
@@ -252,6 +277,14 @@ public class Achievements : MonoBehaviour
         for (int i = 0; i < 1; i++)
         {
             goBack7 = true;
+        }
+    }
+    public IEnumerator AchieveTimer8(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        for (int i = 0; i < 1; i++)
+        {
+            goBack8 = true;
         }
     }
 }
