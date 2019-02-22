@@ -1020,7 +1020,7 @@ Canvas:
   m_GameObject: {fileID: 454044455}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 0
   m_Camera: {fileID: 1523786144}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1030,7 +1030,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!224 &454044458
 RectTransform:
@@ -1040,8 +1040,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454044455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2121277081}
   - {fileID: 795172863}
@@ -1060,9 +1060,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &468836328
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,6 +4125,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7852960393260319225, guid: 7a858154a784bb440940a1d8d2183532,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 454044458}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a858154a784bb440940a1d8d2183532, type: 3}
 --- !u!1 &1523786142

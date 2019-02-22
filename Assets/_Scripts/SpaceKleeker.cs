@@ -11,7 +11,10 @@ public class SpaceKleeker : MonoBehaviour
     public Upgrades upgrades;
     public event Action coochieKleek;
     public event Action coochieReleez;
-    
+
+    public GameObject explosion;
+    public Transform canvas;
+
     void Start()
     {
         upgrades = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>();
@@ -39,6 +42,7 @@ public class SpaceKleeker : MonoBehaviour
     private void OnMouseDown()
     {
         coochieKleek?.Invoke();
+        Instantiate(explosion, Input.mousePosition, transform.rotation, canvas);
     }
     private void OnMouseUpAsButton()
     {
@@ -46,7 +50,8 @@ public class SpaceKleeker : MonoBehaviour
     }
     public IEnumerator BetweenClicks()
     {
-        yield return new WaitForSeconds(seconds: upgrades.timerDivider);
+        if (upgrades != null)
+            yield return new WaitForSeconds(upgrades.timerDivider);
         upgrades.click = true;
         click = true;
 

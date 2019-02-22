@@ -14,6 +14,8 @@ public class AudioAchieve : MonoBehaviour
     public AudioSource upgrade2AS;
     public AudioSource upgrade3AS;
     public AudioSource upgrade4AS;
+
+    public Upgrades upgrades;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +23,10 @@ public class AudioAchieve : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve2 += Billions;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve3 += SevenBill;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve4 += ReallyRich;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade1 += Upgrade1;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade2 += Upgrade2;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade3 += Upgrade3;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade4 += Upgrade4;
+        upgrades.upgrade1 += Upgrade1;
+        upgrades.upgrade2 += Upgrade2;
+        upgrades.upgrade3 += Upgrade3;
+        upgrades.upgrade4 += Upgrade4;
     }
 
     // Update is called once per frame
