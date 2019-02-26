@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Canvas
   - Upgrades
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

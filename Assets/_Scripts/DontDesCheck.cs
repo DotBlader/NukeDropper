@@ -8,7 +8,7 @@ public class DontDesCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (FindObjectOfType<DontDes>() != null)
+        if (FindObjectOfType<Musically>() != null)
             return;
         else
             Instantiate(dontDes, transform.position, transform.rotation);
