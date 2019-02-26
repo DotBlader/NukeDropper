@@ -23,6 +23,8 @@ public class Musically : MonoBehaviour
     }
     private void Start()
     {
+        pauseMenuOn = false;
+        pauseMenu.SetActive(false);
         audioSource.clip = musicClips[musicNum];
         audioSource.Play();
     }
@@ -30,13 +32,15 @@ public class Musically : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuOn == false)
         {
-            pauseMenu.SetActive(true);
+            if (pauseMenu != null)
+                pauseMenu.SetActive(true);
             pauseMenuOn = true;
             Time.timeScale = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuOn == true)
         {
-            pauseMenu.SetActive(false);
+            if (pauseMenu != null)
+                pauseMenu.SetActive(false);
             pauseMenuOn = false;
             Time.timeScale = 1;
         }
@@ -56,7 +60,14 @@ public class Musically : MonoBehaviour
             }
             objects.SetActive(true);
         }
-
+        if (musicNum == 1)
+        {
+            audioSource.volume = 1;
+        }
+        else
+        {
+            audioSource.volume = 0.058f;
+        }
     }
     public void ChangeSong()
     {

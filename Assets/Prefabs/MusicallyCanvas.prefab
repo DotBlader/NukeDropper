@@ -69,7 +69,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -398,14 +398,14 @@ MonoBehaviour:
   pauseMenuOn: 1
   musicClips:
   - {fileID: 8300000, guid: 015e911b4941d9142a460f0d2df11348, type: 3}
-  - {fileID: 8300000, guid: 3a7e1eb9d12719540a9a9a0b8e02a4c8, type: 3}
+  - {fileID: 8300000, guid: 767ca92010125cf4daf0b9316c1d9875, type: 3}
   - {fileID: 8300000, guid: 1c5c857892bea854ca28e324e0e3eb07, type: 3}
   audioSource: {fileID: 0}
   musicUI:
   - {fileID: 1431084524304835752}
   - {fileID: 1431084522793865745}
   - {fileID: 1431084524271510766}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1431084522753477503}
 --- !u!82 &1431084523980835933
 AudioSource:
   m_ObjectHideFlags: 0
