@@ -7,10 +7,10 @@ using System;
 public class Upgrades : MonoBehaviour
 {
     public Kleeker kleeker;
-    public event Action upgrade1;
-    public event Action upgrade2;
-    public event Action upgrade3;
-    public event Action upgrade4;
+    public event Action Upgrade1;
+    public event Action Upgrade2;
+    public event Action Upgrade3;
+    public event Action Upgrade4;
 
     public SpaceKleeker spaceKleeker;
 
@@ -116,7 +116,7 @@ public class Upgrades : MonoBehaviour
         else
         {
             if (upgrade1Int == 0)
-                upgrade1?.Invoke();
+                Upgrade1?.Invoke();
             nukeCostText.text = "Maxed";
             nukeText.text = "Maxed";
         }
@@ -138,7 +138,7 @@ public class Upgrades : MonoBehaviour
         else if (wallLevel == 3)
         {
             if (upgrade2Int == 0)
-                upgrade2?.Invoke();
+                Upgrade2?.Invoke();
             sprite1.SetActive(false); sprite2.SetActive(false); sprite3.SetActive(true);
             immigrantMulti = -100;
             wallText.text = "Maxed";
@@ -156,7 +156,7 @@ public class Upgrades : MonoBehaviour
         if (hotelAmount == 9)
         {
             if (upgrade3Int == 0)
-                upgrade3?.Invoke();
+                Upgrade3?.Invoke();
             hotelText.text = "Maxed";
             hotelCostText.text = "Maxed";
         }
@@ -176,7 +176,7 @@ public class Upgrades : MonoBehaviour
         else if (workerAmount == 9)
         {
             if (upgrade4Int == 0)
-                upgrade4?.Invoke();
+                Upgrade4?.Invoke();
             workCostText.text = "Maxed";
             workText.text = "Maxed";
         }

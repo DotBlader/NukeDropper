@@ -6,7 +6,7 @@ using System;
 public class Achievements : MonoBehaviour
 {
     [Header("Bools")]
-    public bool million;
+    public bool million; // två bools för varje achievement, en för att man har fått den och en för att visa att man ska få den
     public bool millionGet;
 
     public bool billion;
@@ -30,7 +30,7 @@ public class Achievements : MonoBehaviour
     public bool upgrade4;
     public bool upgrade4Get;
 
-    public bool goBack;
+    public bool goBack; //bools för att visa att tillbaka animationen skall starta
     public bool goBack2;
     public bool goBack3;
     public bool goBack4;
@@ -39,7 +39,7 @@ public class Achievements : MonoBehaviour
     public bool goBack7;
     public bool goBack8;
 
-    [Header("Animators")]
+    [Header("Animators")] //alla animators för scen objekten
     public Animator anim1;
     public Animator anim2;
     public Animator anim3;
@@ -48,33 +48,19 @@ public class Achievements : MonoBehaviour
     public Animator anim6;
     public Animator anim7;
     public Animator anim8;
-
-    [Header("GameObjects")]
-    public GameObject smallLoan;
-    public GameObject billionsBillions;
-    public GameObject sevenBill;
-    public GameObject reallyRich;
-    public GameObject WW3;
-    public GameObject WallUpgrade;
-    public GameObject HotelUpgrade;
-    public GameObject WorkUpgrade;
-
-    public Vector3 startTrans;
-    public Vector3 target;
-
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve1 += Achieve1;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve2 += Achieve2;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve3 += Achieve3;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve4 += Achieve4;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade1 += Upgrade1;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade2 += Upgrade2;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade3 += Upgrade3;
-        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().upgrade4 += Upgrade4;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve1 += Achieve1; //kopplar alla funktioner till eventen från andra scripts
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve2 += Achieve2;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve3 += Achieve3;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve4 += Achieve4;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().Upgrade1 += Upgrade1;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().Upgrade2 += Upgrade2;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().Upgrade3 += Upgrade3;
+        GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().Upgrade4 += Upgrade4;
 
-        if (PlayerPrefs.GetInt("million") == 1) { millionGet = true; }
+        if (PlayerPrefs.GetInt("million") == 1) { millionGet = true; } //sätter att man fått achievement om playerprefs säger att man har det
         if (PlayerPrefs.GetInt("billion") == 1) { billionGet = true; }
         if (PlayerPrefs.GetInt("sevenBillion") == 1) { sevenGet = true; }
         if (PlayerPrefs.GetInt("tenBillion") == 1) { tenGet = true; }
@@ -85,20 +71,20 @@ public class Achievements : MonoBehaviour
     }
     private void Update()
     {
-        if (million == true && goBack == false && millionGet == false)
+        if (million == true && goBack == false && millionGet == false) //om man inte redan har fått achievementet, objektet inte skall tillbaka och man ska få den
         {
-            anim1.SetBool("Start 0", true);
-            StartCoroutine(AchieveTimer(2));
-            PlayerPrefs.SetInt("million", 1);
+            anim1.SetBool("Start 0", true); //startar animationen
+            StartCoroutine(AchieveTimer(2)); //startar timern
+            PlayerPrefs.SetInt("million", 1); //sätter att man har fått achievementet
         }
-        else if (million == true && goBack == true)
+        else if (million == true && goBack == true) //om man ska få achievementet och objektet skall gå tillbaka
         {
-            anim1.SetTrigger("Back");
-            anim1.SetBool("Start 0", false);
-            millionGet = true;
-            goBack = false;
+            anim1.SetTrigger("Back"); //startar tillbaka animationen
+            anim1.SetBool("Start 0", false); //avslutar start animationen
+            millionGet = true; //sätter att man har fått den
+            goBack = false; //visar att man inte längre skall gå tillbaka
         }
-        if (billion == true && goBack2 == false && billionGet == false)
+        if (billion == true && goBack2 == false && billionGet == false) //samma sak för alla achievements
         {
             anim2.SetBool("Start 0", true);
             StartCoroutine(AchieveTimer2(2));
@@ -191,7 +177,7 @@ public class Achievements : MonoBehaviour
         }
 
     }
-    public void Achieve1()
+    public void Achieve1() //funktioner för att visa att man skall få achievementena
     {
         million = true;
     }
@@ -223,15 +209,15 @@ public class Achievements : MonoBehaviour
     {
         upgrade4 = true;
     }
-    public IEnumerator AchieveTimer(float seconds)
+    public IEnumerator AchieveTimer(float seconds) //timers för popup rutorna
     {
-        yield return new WaitForSeconds(seconds);
-        for (int i = 0; i < 1; i++)
+        yield return new WaitForSeconds(seconds); //väntar antalet sekunder som krävs av funktionen
+        for (int i = 0; i < 1; i++) //ser till att det bara händer så många gånger jag vill (1 gång)
         {
-            goBack = true;
+            goBack = true; //visar att den skall gå tillbaka
         }
     }
-    public IEnumerator AchieveTimer2(float seconds)
+    public IEnumerator AchieveTimer2(float seconds) //samma sak för alla
     {
         yield return new WaitForSeconds(seconds);
         for (int i = 0; i < 1; i++)

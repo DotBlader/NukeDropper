@@ -60,7 +60,7 @@ public class Musically : MonoBehaviour
             }
             objects.SetActive(true);
         }
-        if (musicNum == 1)
+        if (musicNum == 1 || musicNum == 2)
         {
             audioSource.volume = 1;
         }

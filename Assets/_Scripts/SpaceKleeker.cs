@@ -9,8 +9,8 @@ public class SpaceKleeker : MonoBehaviour
     public bool release;
 
     public Upgrades upgrades;
-    public event Action coochieKleek;
-    public event Action coochieReleez;
+    public event Action NukeDrop;
+    public event Action NukeRelease;
 
     public GameObject explosion;
     public Transform canvas;
@@ -25,7 +25,7 @@ public class SpaceKleeker : MonoBehaviour
         {
             if (click == true)
             {
-                coochieKleek?.Invoke();
+                NukeDrop?.Invoke();
                 StartCoroutine(DuringClick());
                 click = false;
             }
@@ -34,31 +34,32 @@ public class SpaceKleeker : MonoBehaviour
         {
             if (release == true)
             {
-                coochieReleez?.Invoke();
+                NukeRelease?.Invoke();
                 release = false;
             }
         }
     }
     private void OnMouseDown()
     {
-        coochieKleek?.Invoke();
+        NukeDrop?.Invoke();
         Instantiate(explosion, Input.mousePosition, transform.rotation, canvas);
     }
     private void OnMouseUpAsButton()
     {
-        coochieReleez?.Invoke();
+        NukeRelease?.Invoke();
     }
     public IEnumerator BetweenClicks()
     {
         if (upgrades != null)
             yield return new WaitForSeconds(upgrades.timerDivider);
-        upgrades.click = true;
+        if (upgrades != null)
+            upgrades.click = true;
         click = true;
 
     }
     public IEnumerator DuringClick()
     {
-        yield return new WaitForSeconds(0.000001f);
+        yield return new WaitForSeconds(0.00000001f);
         upgrades.click = false;
         release = true;
         upgrades.WorkClick();

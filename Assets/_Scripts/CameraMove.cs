@@ -7,12 +7,6 @@ public class CameraMove : MonoBehaviour
     public float posMax;
     public float posMin;
     public float speed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -24,6 +18,5 @@ public class CameraMove : MonoBehaviour
         {
             transform.Translate(0, speed, 0);
         }
-
     }
 }

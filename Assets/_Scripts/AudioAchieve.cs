@@ -19,20 +19,14 @@ public class AudioAchieve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve1 += SmallLoan;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve2 += Billions;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve3 += SevenBill;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().achieve4 += ReallyRich;
-        upgrades.upgrade1 += Upgrade1;
-        upgrades.upgrade2 += Upgrade2;
-        upgrades.upgrade3 += Upgrade3;
-        upgrades.upgrade4 += Upgrade4;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve1 += SmallLoan;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve2 += Billions;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve3 += SevenBill;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().Achieve4 += ReallyRich;
+        upgrades.Upgrade1 += WorldWarThree;
+        upgrades.Upgrade2 += BuildWall;
+        upgrades.Upgrade3 += Hotels;
+        upgrades.Upgrade4 += HireWorkers;
     }
     public void SmallLoan()
     {
@@ -62,28 +56,28 @@ public class AudioAchieve : MonoBehaviour
             reallyRichAS.PlayDelayed(0.5f);
         }
     }
-    public void Upgrade1()
+    public void WorldWarThree()
     {
         for (int i = 0; i < 1; i++)
         {
             upgrade1AS.PlayDelayed(0.5f);
         }
     }
-    public void Upgrade2()
+    public void BuildWall()
     {
         for (int i = 0; i < 1; i++)
         {
             upgrade2AS.PlayDelayed(0.5f);
         }
     }
-    public void Upgrade3()
+    public void Hotels()
     {
         for (int i = 0; i < 1; i++)
         {
             upgrade3AS.PlayDelayed(0.5f);
         }
     }
-    public void Upgrade4()
+    public void HireWorkers()
     {
         for (int i = 0; i < 1; i++)
         {

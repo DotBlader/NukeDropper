@@ -11,13 +11,7 @@ public class Audio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceKleeker>().coochieKleek += Bing;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceKleeker>().NukeDrop += Bing;
     }
     public void Bing()
     {
