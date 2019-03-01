@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDes : MonoBehaviour
+public class DontDes : MonoBehaviour //endast ett test script
 {
-    private void Awake()
+    private void Awake() 
     {
         DontDestroyOnLoad(gameObject);
         if (FindObjectsOfType<DontDes>().Length > 1)

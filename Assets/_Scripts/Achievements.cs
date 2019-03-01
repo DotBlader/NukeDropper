@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Achievements : MonoBehaviour
 {
@@ -18,17 +16,17 @@ public class Achievements : MonoBehaviour
     public bool tenBillion;
     public bool tenGet;
 
-    public bool upgrade1;
-    public bool upgrade1Get;
+    public bool wwThree;
+    public bool wwThreeGet;
 
-    public bool upgrade2;
-    public bool upgrade2Get;
+    public bool buildWall;
+    public bool buildWallGet;
 
-    public bool upgrade3;
-    public bool upgrade3Get;
+    public bool hotels;
+    public bool hotelsGet;
 
-    public bool upgrade4;
-    public bool upgrade4Get;
+    public bool workers;
+    public bool workersGet;
 
     public bool goBack; //bools för att visa att tillbaka animationen skall starta
     public bool goBack2;
@@ -64,10 +62,10 @@ public class Achievements : MonoBehaviour
         if (PlayerPrefs.GetInt("billion") == 1) { billionGet = true; }
         if (PlayerPrefs.GetInt("sevenBillion") == 1) { sevenGet = true; }
         if (PlayerPrefs.GetInt("tenBillion") == 1) { tenGet = true; }
-        if (PlayerPrefs.GetInt("upgrade1") == 1) { upgrade1Get = true; }
-        if (PlayerPrefs.GetInt("upgrade2") == 1) { upgrade2Get = true; }
-        if (PlayerPrefs.GetInt("upgrade3") == 1) { upgrade3Get = true; }
-        if (PlayerPrefs.GetInt("upgrade4") == 1) { upgrade4Get = true; }
+        if (PlayerPrefs.GetInt("upgrade1") == 1) { wwThreeGet = true; }
+        if (PlayerPrefs.GetInt("upgrade2") == 1) { buildWallGet = true; }
+        if (PlayerPrefs.GetInt("upgrade3") == 1) { hotelsGet = true; }
+        if (PlayerPrefs.GetInt("upgrade4") == 1) { workersGet = true; }
     }
     private void Update()
     {
@@ -123,56 +121,56 @@ public class Achievements : MonoBehaviour
             tenGet = true;
             goBack4 = false;
         }
-        if (upgrade1 == true && goBack5 == false && upgrade1Get == false)
+        if (wwThree == true && goBack5 == false && wwThreeGet == false)
         {
             anim5.SetBool("Start 0", true);
             StartCoroutine(AchieveTimer5(2));
             PlayerPrefs.SetInt("upgrade1", 1);
         }
-        else if (upgrade1 == true && goBack5 == true)
+        else if (wwThree == true && goBack5 == true)
         {
             anim5.SetTrigger("Back");
             anim5.SetBool("Start 0", false);
-            upgrade1Get = true;
+            wwThreeGet = true;
             goBack5 = false;
         }
-        if (upgrade2 == true && goBack6 == false && upgrade2Get == false)
+        if (buildWall == true && goBack6 == false && buildWallGet == false)
         {
             anim6.SetBool("Start 0", true);
             StartCoroutine(AchieveTimer6(2));
             PlayerPrefs.SetInt("upgrade2", 1);
         }
-        else if (upgrade2 == true && goBack6 == true)
+        else if (buildWall == true && goBack6 == true)
         {
             anim6.SetTrigger("Back");
             anim6.SetBool("Start 0", false);
-            upgrade2Get = true;
+            buildWallGet = true;
             goBack6 = false;
         }
-        if (upgrade3 == true && goBack7 == false && upgrade3Get == false)
+        if (hotels == true && goBack7 == false && hotelsGet == false)
         {
             anim7.SetBool("Start 0", true);
             StartCoroutine(AchieveTimer7(2));
             PlayerPrefs.SetInt("upgrade3", 1);
         }
-        else if (upgrade3 == true && goBack7 == true)
+        else if (hotels == true && goBack7 == true)
         {
             anim7.SetTrigger("Back");
             anim7.SetBool("Start 0", false);
-            upgrade3Get = true;
+            hotelsGet = true;
             goBack7 = false;
         }
-        if (upgrade4 == true && goBack8 == false && upgrade4Get == false)
+        if (workers == true && goBack8 == false && workersGet == false)
         {
             anim8.SetBool("Start 0", true);
             StartCoroutine(AchieveTimer8(2));
             PlayerPrefs.SetInt("upgrade4", 1);
         }
-        else if (upgrade4 == true && goBack8 == true)
+        else if (workers == true && goBack8 == true)
         {
             anim8.SetTrigger("Back");
             anim8.SetBool("Start 0", false);
-            upgrade4Get = true;
+            workersGet = true;
             goBack8 = false;
         }
 
@@ -195,19 +193,19 @@ public class Achievements : MonoBehaviour
     }
     public void Upgrade1()
     {
-        upgrade1 = true;
+        wwThree = true;
     }
     public void Upgrade2()
     {
-        upgrade2 = true;
+        buildWall = true;
     }
     public void Upgrade3()
     {
-        upgrade3 = true;
+        hotels = true;
     }
     public void Upgrade4()
     {
-        upgrade4 = true;
+        workers = true;
     }
     public IEnumerator AchieveTimer(float seconds) //timers för popup rutorna
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3268,7 +3268,6 @@ GameObject:
   - component: {fileID: 981589646}
   - component: {fileID: 981589645}
   - component: {fileID: 981589648}
-  - component: {fileID: 981589649}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Canvas
@@ -3368,14 +3367,14 @@ MonoBehaviour:
   sevenGet: 0
   tenBillion: 0
   tenGet: 0
-  upgrade1: 0
-  upgrade1Get: 0
-  upgrade2: 0
-  upgrade2Get: 0
-  upgrade3: 0
-  upgrade3Get: 0
-  upgrade4: 0
-  upgrade4Get: 0
+  wwThree: 0
+  wwThreeGet: 0
+  buildWall: 0
+  buildWallGet: 0
+  hotels: 0
+  hotelsGet: 0
+  workers: 0
+  workersGet: 0
   goBack: 0
   goBack2: 0
   goBack3: 0
@@ -3392,37 +3391,6 @@ MonoBehaviour:
   anim6: {fileID: 852076599}
   anim7: {fileID: 1888228904}
   anim8: {fileID: 1652843512}
-  smallLoan: {fileID: 1612706137}
-  billionsBillions: {fileID: 1228975790}
-  sevenBill: {fileID: 131065858}
-  reallyRich: {fileID: 311383841}
-  WW3: {fileID: 1622827241}
-  WallUpgrade: {fileID: 852076595}
-  HotelUpgrade: {fileID: 1888228900}
-  WorkUpgrade: {fileID: 1652843509}
-  startTrans: {x: 1587, y: 1199, z: 1}
-  target: {x: 1587, y: 929, z: 1}
---- !u!114 &981589649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981589644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d723e5b279826e4ab8a1780b3ff57f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallLoanAS: {fileID: 1612706142}
-  billionsAS: {fileID: 1228975795}
-  sevenBillAS: {fileID: 131065863}
-  reallyRichAS: {fileID: 311383846}
-  upgrade1AS: {fileID: 1622827246}
-  upgrade2AS: {fileID: 852076600}
-  upgrade3AS: {fileID: 1888228905}
-  upgrade4AS: {fileID: 1652843511}
-  upgrades: {fileID: 673444974}
 --- !u!1 &1020731149
 GameObject:
   m_ObjectHideFlags: 0
@@ -6261,7 +6229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   click: 0
   release: 0
-  upgrades: {fileID: 0}
+  upgrades: {fileID: 673444974}
   explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   canvas: {fileID: 981589647}
 --- !u!212 &1746791547
@@ -6359,7 +6327,7 @@ MonoBehaviour:
   scoreText: {fileID: 6487394311990916166, guid: 12c7e67d3c3d98b4fb6048735d8bfeaa,
     type: 3}
   poangText: {fileID: 9032240924585151767}
-  upgradesScript: {fileID: 0}
+  upgradesScript: {fileID: 673444974}
   t: 10
   score: 0
 --- !u!114 &1746791551
@@ -7196,6 +7164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2069245843}
   - component: {fileID: 2069245842}
+  - component: {fileID: 2069245844}
   m_Layer: 0
   m_Name: MURICAFUCKYEAH
   m_TagString: Untagged
@@ -7265,6 +7234,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069245844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069245841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d723e5b279826e4ab8a1780b3ff57f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallLoanAS: {fileID: 1612706142}
+  billionsAS: {fileID: 1228975795}
+  sevenBillAS: {fileID: 131065863}
+  reallyRichAS: {fileID: 311383846}
+  WWThreeAS: {fileID: 1622827246}
+  BuildWallAS: {fileID: 852076600}
+  HotelsAS: {fileID: 1888228905}
+  WorkersAS: {fileID: 1652843511}
+  upgrades: {fileID: 0}
 --- !u!1 &2078226865
 GameObject:
   m_ObjectHideFlags: 0

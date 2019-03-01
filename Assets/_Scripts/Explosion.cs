@@ -7,11 +7,11 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DesTroy());
+        StartCoroutine(DesTroy()); //startar timern 
     }
-    public IEnumerator DesTroy()
+    public IEnumerator DesTroy() //ienumerator för timer att förstöra objektet
     {
-        yield return new WaitForSeconds(2);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(2); //väntar 2 sekunder
+        Destroy(gameObject); //förstör objektet
     }
 }
