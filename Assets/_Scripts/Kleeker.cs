@@ -17,6 +17,7 @@ public class Kleeker : MonoBehaviour
     public event Action Achieve2;
     public event Action Achieve3;
     public event Action Achieve4;
+    public event Action AchieveFinal;
 
     public float t; // float jag inte vet vad den gör
     public int score; //int för ens totala poäng/ pengar
@@ -50,6 +51,10 @@ public class Kleeker : MonoBehaviour
         if (score >= 1000 && PlayerPrefs.GetInt("billion") == 0) { Achieve2?.Invoke(); }//om man inte redan har fått dem genom playerprefs
         if (score >= 7000 && PlayerPrefs.GetInt("sevenBillion") == 0) { Achieve3?.Invoke(); }
         if (score >= 50000 && PlayerPrefs.GetInt("tenBillion") == 0) { Achieve4?.Invoke(); }
+        if (PlayerPrefs.GetInt("million") == 1 && PlayerPrefs.GetInt("billion") == 1 
+            && PlayerPrefs.GetInt("sevenBillion") == 1 && PlayerPrefs.GetInt("tenBillion") == 1 
+            && PlayerPrefs.GetInt("upgrade1") == 1 && PlayerPrefs.GetInt("upgrade2") == 1 
+            && PlayerPrefs.GetInt("upgrade3") == 1 && PlayerPrefs.GetInt("upgrade4") == 1) { AchieveFinal?.Invoke(); } //invoke:ar den sista eventen om man fått alla achievements
     }
     void ScoreIncrease() //funktion för att öka score
     {

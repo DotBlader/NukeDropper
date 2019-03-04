@@ -42,6 +42,7 @@ public class AchieveScene : MonoBehaviour
         PlayerPrefs.SetInt("upgrade2", 0);
         PlayerPrefs.SetInt("upgrade3", 0);
         PlayerPrefs.SetInt("upgrade4", 0);
+        PlayerPrefs.SetInt("americaGreat", 0);
 
         PlayerPrefs.SetInt("Nukes", 1); //alla uppgraderingar reset:as
         PlayerPrefs.SetInt("WallLevel", 0);

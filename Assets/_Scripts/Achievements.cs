@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Achievements : MonoBehaviour
+public class Achievements : MonoBehaviour //Hade säkert kunna använda inheritance eller liknande för detta script men detta var lättare för mig att ha koll på
 {
     [Header("Bools")]
     public bool million; // två bools för varje achievement, en för att man har fått den och en för att visa att man ska få den
@@ -28,6 +28,9 @@ public class Achievements : MonoBehaviour
     public bool workers;
     public bool workersGet;
 
+    public bool great;
+    public bool greatGet;
+
     public bool goBack; //bools för att visa att tillbaka animationen skall starta
     public bool goBack2;
     public bool goBack3;
@@ -36,6 +39,7 @@ public class Achievements : MonoBehaviour
     public bool goBack6;
     public bool goBack7;
     public bool goBack8;
+    public bool goBack9;
 
     [Header("Animators")] //alla animators för scen objekten
     public Animator anim1;
@@ -46,6 +50,7 @@ public class Achievements : MonoBehaviour
     public Animator anim6;
     public Animator anim7;
     public Animator anim8;
+    public Animator anim9;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +62,7 @@ public class Achievements : MonoBehaviour
         GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().Upgrade2 += Upgrade2;
         GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().Upgrade3 += Upgrade3;
         GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>().Upgrade4 += Upgrade4;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Kleeker>().AchieveFinal += AchieveFinal;
 
         if (PlayerPrefs.GetInt("million") == 1) { millionGet = true; } //sätter att man fått achievement om playerprefs säger att man har det
         if (PlayerPrefs.GetInt("billion") == 1) { billionGet = true; }
@@ -66,6 +72,7 @@ public class Achievements : MonoBehaviour
         if (PlayerPrefs.GetInt("upgrade2") == 1) { buildWallGet = true; }
         if (PlayerPrefs.GetInt("upgrade3") == 1) { hotelsGet = true; }
         if (PlayerPrefs.GetInt("upgrade4") == 1) { workersGet = true; }
+        if (PlayerPrefs.GetInt("americaGreat") == 1) { greatGet = true; }
     }
     private void Update()
     {
@@ -173,7 +180,19 @@ public class Achievements : MonoBehaviour
             workersGet = true;
             goBack8 = false;
         }
-
+        if (great == true && goBack9 == false && greatGet == false)
+        {
+            anim9.SetBool("Start 0", true);
+            StartCoroutine(AchieveTimer9(2));
+            PlayerPrefs.SetInt("americaGreat", 1);
+        }
+        else if (great == true && goBack9 == true)
+        {
+            anim9.SetTrigger("Back");
+            anim9.SetBool("Start 0", false);
+            greatGet = true;
+            goBack9 = false;
+        }
     }
     public void Achieve1() //funktioner för att visa att man skall få achievementena
     {
@@ -206,6 +225,10 @@ public class Achievements : MonoBehaviour
     public void Upgrade4()
     {
         workers = true;
+    }
+    public void AchieveFinal()
+    {
+        great = true;
     }
     public IEnumerator AchieveTimer(float seconds) //timers för popup rutorna
     {
@@ -269,6 +292,14 @@ public class Achievements : MonoBehaviour
         for (int i = 0; i < 1; i++)
         {
             goBack8 = true;
+        }
+    }
+    public IEnumerator AchieveTimer9(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        for (int i = 0; i < 1; i++)
+        {
+            goBack9 = true;
         }
     }
 }
